@@ -18,6 +18,9 @@
 		10D98E1822E5A9280000A373 /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E1422E5A9280000A373 /* TodoViewModel.swift */; };
 		10D98E1B22E5A9ED0000A373 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E1A22E5A9ED0000A373 /* MainViewController.swift */; };
 		10D98E1D22E5AA9A0000A373 /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E1C22E5AA9A0000A373 /* TodoViewController.swift */; };
+		10D98E2022E5AF7D0000A373 /* AddTodoListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */; };
+		10D98E2222E5AFF10000A373 /* AddTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2122E5AFF10000A373 /* AddTodoListView.swift */; };
+		10D98E2522E5B0A00000A373 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2422E5B0A00000A373 /* Constants.swift */; };
 		A4711FC7CAC713A43B2C07A1 /* Pods_J_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851B33DFB8220997A3090AED /* Pods_J_Todo.framework */; };
 		C880440388CBA4632527A86D /* Pods_J_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B742F94C22BB81734DC402 /* Pods_J_TodoUITests.framework */; };
 		F3886786B7A3AD7A9D9A8CCB /* Pods_J_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387DC9DD49E219BE543121E8 /* Pods_J_TodoTests.framework */; };
@@ -59,6 +62,9 @@
 		10D98E1422E5A9280000A373 /* TodoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		10D98E1A22E5A9ED0000A373 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		10D98E1C22E5AA9A0000A373 /* TodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTodoListView.xib; sourceTree = "<group>"; };
+		10D98E2122E5AFF10000A373 /* AddTodoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoListView.swift; sourceTree = "<group>"; };
+		10D98E2422E5B0A00000A373 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		23B742F94C22BB81734DC402 /* Pods_J_TodoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_J_TodoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		261C529B8432CB103859A6D0 /* Pods-J.TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.TodoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-J.TodoTests/Pods-J.TodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		387DC9DD49E219BE543121E8 /* Pods_J_TodoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_J_TodoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,7 +134,8 @@
 				10D98DEB22E5A8DC0000A373 /* LaunchScreen.storyboard */,
 				10D98DEE22E5A8DC0000A373 /* Info.plist */,
 				10D98E1922E5A9C20000A373 /* Main */,
-				10D98E1022E5A9270000A373 /* Result */,
+				10D98E1022E5A9270000A373 /* TodoList */,
+				10D98E2322E5B0860000A373 /* Util */,
 			);
 			path = J.Todo;
 			sourceTree = "<group>";
@@ -151,15 +158,16 @@
 			path = J.TodoUITests;
 			sourceTree = "<group>";
 		};
-		10D98E1022E5A9270000A373 /* Result */ = {
+		10D98E1022E5A9270000A373 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
+				10D98E1E22E5AF690000A373 /* CustomAlert */,
 				10D98E1C22E5AA9A0000A373 /* TodoViewController.swift */,
 				10D98E1122E5A9270000A373 /* TodoDataModel.swift */,
 				10D98E1322E5A9280000A373 /* ResultTableCell.swift */,
 				10D98E1422E5A9280000A373 /* TodoViewModel.swift */,
 			);
-			path = Result;
+			path = TodoList;
 			sourceTree = "<group>";
 		};
 		10D98E1922E5A9C20000A373 /* Main */ = {
@@ -168,6 +176,23 @@
 				10D98E1A22E5A9ED0000A373 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		10D98E1E22E5AF690000A373 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */,
+				10D98E2122E5AFF10000A373 /* AddTodoListView.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		10D98E2322E5B0860000A373 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				10D98E2422E5B0A00000A373 /* Constants.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		1B58DF1638E8AD6E31A70375 /* Pods */ = {
@@ -303,6 +328,7 @@
 			files = (
 				10D98DED22E5A8DC0000A373 /* LaunchScreen.storyboard in Resources */,
 				10D98DEA22E5A8DC0000A373 /* Assets.xcassets in Resources */,
+				10D98E2022E5AF7D0000A373 /* AddTodoListView.xib in Resources */,
 				10D98DE822E5A8DB0000A373 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,12 +411,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-J.Todo/Pods-J.Todo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
@@ -412,7 +442,9 @@
 				10D98E1B22E5A9ED0000A373 /* MainViewController.swift in Sources */,
 				10D98E1522E5A9280000A373 /* TodoDataModel.swift in Sources */,
 				10D98E1D22E5AA9A0000A373 /* TodoViewController.swift in Sources */,
+				10D98E2222E5AFF10000A373 /* AddTodoListView.swift in Sources */,
 				10D98E1722E5A9280000A373 /* ResultTableCell.swift in Sources */,
+				10D98E2522E5B0A00000A373 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
