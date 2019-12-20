@@ -1,4 +1,5 @@
 PODS:
+  - JTAppleCalendar (7.1.7)
   - Realm (3.17.1):
     - Realm/Headers (= 3.17.1)
   - Realm/Headers (3.17.1)
@@ -12,12 +13,14 @@ PODS:
   - RxSwift (5.0.0)
 
 DEPENDENCIES:
+  - JTAppleCalendar (~> 7.1)
   - RealmSwift
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - JTAppleCalendar
     - Realm
     - RealmSwift
     - RxCocoa
@@ -25,12 +28,13 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
   Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
   RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
   RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
   RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: 217ecb14e445706829f51f24b61369214afe7af4
+PODFILE CHECKSUM: 2858ec9da41538ca8c74d38ce72f641a48da93fa
 
 COCOAPODS: 1.5.3

@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10148C6723AC57F7003DFAA5 /* SelectedTodoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10148C6623AC57F7003DFAA5 /* SelectedTodoListCell.swift */; };
+		10148C6923AC6A3F003DFAA5 /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10148C6823AC6A3F003DFAA5 /* ViewControllerExtension.swift */; };
+		10148C6B23AC9DD5003DFAA5 /* ModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10148C6A23AC9DD5003DFAA5 /* ModelContainer.swift */; };
+		1017A7F823AB0AAF002C5790 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1017A7F723AB0AAF002C5790 /* DateExtension.swift */; };
+		1017A7FB23AB663D002C5790 /* BaseDataContainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1017A7FA23AB663D002C5790 /* BaseDataContainViewController.swift */; };
+		1017A7FD23AB6FCE002C5790 /* ListOfTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1017A7FC23AB6FCE002C5790 /* ListOfTodoViewController.swift */; };
+		106F489522F3D078001BFF13 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F489422F3D078001BFF13 /* CalendarViewController.swift */; };
+		106F489822F3D17E001BFF13 /* CalendarDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F489722F3D17E001BFF13 /* CalendarDateCell.swift */; };
+		106F489B22F3F3B0001BFF13 /* CalendarHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106F489A22F3F3B0001BFF13 /* CalendarHeader.swift */; };
+		10BA559E22E7F55000E564AE /* TodoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA559D22E7F55000E564AE /* TodoDetailViewController.swift */; };
+		10BA55A022E81CAE00E564AE /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA559F22E81CAE00E564AE /* Util.swift */; };
+		10BA55A422E8204800E564AE /* PhotoCropView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10BA55A222E8204800E564AE /* PhotoCropView.xib */; };
+		10BA55A522E8204800E564AE /* PhotoCropView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA55A322E8204800E564AE /* PhotoCropView.swift */; };
+		10BA55A722E823FC00E564AE /* CroppingImageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10BA55A622E823FC00E564AE /* CroppingImageProtocol.swift */; };
 		10D98DE322E5A8DB0000A373 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98DE222E5A8DB0000A373 /* AppDelegate.swift */; };
 		10D98DE822E5A8DB0000A373 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10D98DE622E5A8DB0000A373 /* Main.storyboard */; };
 		10D98DEA22E5A8DC0000A373 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10D98DE922E5A8DC0000A373 /* Assets.xcassets */; };
@@ -44,7 +58,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10148C6623AC57F7003DFAA5 /* SelectedTodoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTodoListCell.swift; sourceTree = "<group>"; };
+		10148C6823AC6A3F003DFAA5 /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
+		10148C6A23AC9DD5003DFAA5 /* ModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContainer.swift; sourceTree = "<group>"; };
+		1017A7F723AB0AAF002C5790 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		1017A7FA23AB663D002C5790 /* BaseDataContainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataContainViewController.swift; sourceTree = "<group>"; };
+		1017A7FC23AB6FCE002C5790 /* ListOfTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfTodoViewController.swift; sourceTree = "<group>"; };
 		10477C50E0EE5C31830B6ECD /* Pods-J.TodoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.TodoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-J.TodoUITests/Pods-J.TodoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		106F489422F3D078001BFF13 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		106F489722F3D17E001BFF13 /* CalendarDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDateCell.swift; sourceTree = "<group>"; };
+		106F489A22F3F3B0001BFF13 /* CalendarHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHeader.swift; sourceTree = "<group>"; };
+		10BA559D22E7F55000E564AE /* TodoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailViewController.swift; sourceTree = "<group>"; };
+		10BA559F22E81CAE00E564AE /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		10BA55A222E8204800E564AE /* PhotoCropView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCropView.xib; sourceTree = "<group>"; };
+		10BA55A322E8204800E564AE /* PhotoCropView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCropView.swift; sourceTree = "<group>"; };
+		10BA55A622E823FC00E564AE /* CroppingImageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CroppingImageProtocol.swift; sourceTree = "<group>"; };
 		10D98DDF22E5A8DB0000A373 /* J.Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = J.Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D98DE222E5A8DB0000A373 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10D98DE722E5A8DB0000A373 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +131,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10148C6323AC57C1003DFAA5 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				10148C6623AC57F7003DFAA5 /* SelectedTodoListCell.swift */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
+		1017A7F623AB0A93002C5790 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1017A7F723AB0AAF002C5790 /* DateExtension.swift */,
+				10148C6823AC6A3F003DFAA5 /* ViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		1017A7F923AB662B002C5790 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1017A7FA23AB663D002C5790 /* BaseDataContainViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		106F489322F3D05F001BFF13 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				10148C6323AC57C1003DFAA5 /* ListCell */,
+				106F489922F3F39E001BFF13 /* Header */,
+				106F489622F3D173001BFF13 /* DateCell */,
+				106F489422F3D078001BFF13 /* CalendarViewController.swift */,
+				1017A7FC23AB6FCE002C5790 /* ListOfTodoViewController.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		106F489622F3D173001BFF13 /* DateCell */ = {
+			isa = PBXGroup;
+			children = (
+				106F489722F3D17E001BFF13 /* CalendarDateCell.swift */,
+			);
+			path = DateCell;
+			sourceTree = "<group>";
+		};
+		106F489922F3F39E001BFF13 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				106F489A22F3F3B0001BFF13 /* CalendarHeader.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		10BA55A122E8203A00E564AE /* CropImage */ = {
+			isa = PBXGroup;
+			children = (
+				10BA55A322E8204800E564AE /* PhotoCropView.swift */,
+				10BA55A222E8204800E564AE /* PhotoCropView.xib */,
+				10BA55A622E823FC00E564AE /* CroppingImageProtocol.swift */,
+			);
+			path = CropImage;
+			sourceTree = "<group>";
+		};
 		10D98DD622E5A8DB0000A373 = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +225,10 @@
 				10D98DEB22E5A8DC0000A373 /* LaunchScreen.storyboard */,
 				10D98DEE22E5A8DC0000A373 /* Info.plist */,
 				10D98E1922E5A9C20000A373 /* Main */,
+				1017A7F923AB662B002C5790 /* Base */,
+				106F489322F3D05F001BFF13 /* Calendar */,
 				10D98E1022E5A9270000A373 /* TodoList */,
+				1017A7F623AB0A93002C5790 /* Extension */,
 				10D98E2322E5B0860000A373 /* Util */,
 			);
 			path = J.Todo;
@@ -166,6 +260,7 @@
 				10D98E1122E5A9270000A373 /* TodoDataModel.swift */,
 				10D98E1322E5A9280000A373 /* ResultTableCell.swift */,
 				10D98E1422E5A9280000A373 /* TodoViewModel.swift */,
+				10BA559D22E7F55000E564AE /* TodoDetailViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -174,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				10D98E1A22E5A9ED0000A373 /* MainViewController.swift */,
+				10148C6A23AC9DD5003DFAA5 /* ModelContainer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -190,7 +286,9 @@
 		10D98E2322E5B0860000A373 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				10BA55A122E8203A00E564AE /* CropImage */,
 				10D98E2422E5B0A00000A373 /* Constants.swift */,
+				10BA559F22E81CAE00E564AE /* Util.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -328,6 +426,7 @@
 			files = (
 				10D98DED22E5A8DC0000A373 /* LaunchScreen.storyboard in Resources */,
 				10D98DEA22E5A8DC0000A373 /* Assets.xcassets in Resources */,
+				10BA55A422E8204800E564AE /* PhotoCropView.xib in Resources */,
 				10D98E2022E5AF7D0000A373 /* AddTodoListView.xib in Resources */,
 				10D98DE822E5A8DB0000A373 /* Main.storyboard in Resources */,
 			);
@@ -411,6 +510,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-J.Todo/Pods-J.Todo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -419,6 +519,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -438,13 +539,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D98E1822E5A9280000A373 /* TodoViewModel.swift in Sources */,
+				10148C6B23AC9DD5003DFAA5 /* ModelContainer.swift in Sources */,
 				10D98DE322E5A8DB0000A373 /* AppDelegate.swift in Sources */,
+				1017A7FB23AB663D002C5790 /* BaseDataContainViewController.swift in Sources */,
+				1017A7FD23AB6FCE002C5790 /* ListOfTodoViewController.swift in Sources */,
+				10148C6723AC57F7003DFAA5 /* SelectedTodoListCell.swift in Sources */,
 				10D98E1B22E5A9ED0000A373 /* MainViewController.swift in Sources */,
+				10BA55A522E8204800E564AE /* PhotoCropView.swift in Sources */,
 				10D98E1522E5A9280000A373 /* TodoDataModel.swift in Sources */,
+				10148C6923AC6A3F003DFAA5 /* ViewControllerExtension.swift in Sources */,
+				10BA55A722E823FC00E564AE /* CroppingImageProtocol.swift in Sources */,
 				10D98E1D22E5AA9A0000A373 /* TodoViewController.swift in Sources */,
 				10D98E2222E5AFF10000A373 /* AddTodoListView.swift in Sources */,
+				106F489522F3D078001BFF13 /* CalendarViewController.swift in Sources */,
+				1017A7F823AB0AAF002C5790 /* DateExtension.swift in Sources */,
 				10D98E1722E5A9280000A373 /* ResultTableCell.swift in Sources */,
+				10BA55A022E81CAE00E564AE /* Util.swift in Sources */,
 				10D98E2522E5B0A00000A373 /* Constants.swift in Sources */,
+				10BA559E22E7F55000E564AE /* TodoDetailViewController.swift in Sources */,
+				106F489822F3D17E001BFF13 /* CalendarDateCell.swift in Sources */,
+				106F489B22F3F3B0001BFF13 /* CalendarHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

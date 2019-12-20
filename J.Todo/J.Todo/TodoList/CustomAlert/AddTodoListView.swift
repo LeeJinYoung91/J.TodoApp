@@ -15,18 +15,34 @@ class AddTodoListView: UIView {
     
     private final let widthMargin: CGFloat = 10
     private var backgroundDarkView: UIView?
+    private var keyboardAppearance: Bool = false
+    private final let colorPlaceHolder = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.8)
+    private final let textViewInputColor = UIColor.white
     
     var DataListener: ((TodoDataModel) -> Void)?
     
     override func awakeFromNib() {
-        frame = CGRect(x: widthMargin, y: screenHeight + addTodoAlertViewHeight, width: screenWidth - widthMargin*2, height: addTodoAlertViewHeight)
-        layer.cornerRadius = 15
-        layer.masksToBounds = true
+        addDelegate()
+        setDefaultUI()
         setKeyboardAccessoryView()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
-    func setKeyboardAccessoryView() {
+    private func addDelegate() {
+        contentInputView.delegate = self
+    }
+    
+    private func setDefaultUI() {
+        frame = CGRect(x: widthMargin, y: screenHeight + addTodoAlertViewHeight, width: screenWidth - widthMargin*2, height: addTodoAlertViewHeight)
+        layer.cornerRadius = 15
+        layer.masksToBounds = true
+        titleInputView.placeholder = "Input Title"
+        contentInputView.text = "Input Content"
+        contentInputView.textColor = colorPlaceHolder
+        contentInputView.selectedRange = NSRange(location: 0, length: 0)
+    }
+    
+    private func setKeyboardAccessoryView() {
         let toolBarKeyboard = UIToolbar()
         let addTodoButton = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addTodoList))
         let cancelAddListButton = UIBarButtonItem(title: "OK", style: .done, target: self, action: #selector(closeKeyboard))
@@ -41,12 +57,13 @@ class AddTodoListView: UIView {
     @objc private func closeKeyboard() {
         titleInputView.endEditing(true)
         contentInputView.endEditing(true)
+        keyboardAppearance = false
     }
     
     @objc private func addTodoList() {
         titleInputView.endEditing(true)
         contentInputView.endEditing(true)
-        DataListener?(TodoDataModel(value: [titleInputView.text:contentInputView.text]))
+        DataListener?(TodoDataModel(value: (titleInputView.text, contentInputView.text)))
         hide()
     }
     
@@ -83,7 +100,13 @@ class AddTodoListView: UIView {
             var targetFrame: CGRect = frame
             if endFrameY >= UIScreen.main.bounds.size.height {
                 targetFrame = CGRect(x: targetFrame.origin.x, y: endFrameY - (targetFrame.height + safeAreaBottom), width: targetFrame.width, height: targetFrame.height)
+                keyboardAppearance = false
             } else {
+                if (keyboardAppearance) {
+                    return
+                }
+                
+                keyboardAppearance = true
                 targetFrame = CGRect(x: targetFrame.origin.x, y: targetFrame.origin.y - endFrameY + safeAreaBottom * 2, width: targetFrame.width, height: targetFrame.height)
             }
             
@@ -92,7 +115,41 @@ class AddTodoListView: UIView {
                            options: animationCurve,
                            animations: {
                             self.frame = targetFrame
+                            self.keyboardAppearance = true
             },completion: nil)
+        }
+    }
+}
+
+extension AddTodoListView: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == colorPlaceHolder {
+            textView.text = nil
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if range.location == 0 && text != "" {
+            textView.text = nil
+            textView.textColor = textViewInputColor
+        }
+        
+        return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Input Content"
+            textView.textColor = colorPlaceHolder
+            textView.selectedRange = NSRange(location: 0, length: 0)
+        } else {
+            textView.textColor = textViewInputColor
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.textColor == colorPlaceHolder {
+            textView.text = "Input Content"
         }
     }
 }

@@ -7,6 +7,7 @@ target 'J.Todo' do
     pod 'RxSwift',    '~> 5'
     pod 'RxCocoa',    '~> 5'
     pod 'RealmSwift'
+    pod 'JTAppleCalendar', '~> 7.1'
   # Pods for J.Todo
 
   target 'J.TodoTests' do

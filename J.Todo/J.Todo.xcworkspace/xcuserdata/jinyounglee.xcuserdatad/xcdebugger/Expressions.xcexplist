@@ -3,6 +3,20 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "TodoDataModel.__allocating_init(value:):TodoDataModel.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TodoDetailViewController.setUpWithModel(_:):TodoDetailViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "TodoViewController.tableView(_:cellForRowAt:):TodoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "TodoDataModel.initialize(title:content:):TodoDataModel.swift">
          <PersistentStrings>
             <PersistentString
