@@ -92,7 +92,7 @@ public struct ConfigurationParameters {
                 calendar: Calendar = Calendar.current,
                 generateInDates: InDateCellGeneration = .forAllMonths,
                 generateOutDates: OutDateCellGeneration = .tillEndOfGrid,
-                firstDayOfWeek: DaysOfWeek = .sunday,
+                firstDayOfWeek: DaysOfWeek? = nil,
                 hasStrictBoundaries: Bool? = nil) {
         self.startDate = startDate
         self.endDate = endDate
@@ -111,7 +111,12 @@ public struct ConfigurationParameters {
         self.calendar = calendar
         self.generateInDates = generateInDates
         self.generateOutDates = generateOutDates
-        self.firstDayOfWeek = firstDayOfWeek
+        
+        if let firstDayOfWeek = firstDayOfWeek {
+            self.firstDayOfWeek = firstDayOfWeek
+        } else {
+            self.firstDayOfWeek = DaysOfWeek(rawValue: calendar.firstWeekday) ?? .sunday
+        }
     }
 }
 
@@ -190,7 +195,7 @@ public struct Month {
     
     private func sectionFor(day: Int) -> (externalSection: Int, internalSection: Int) {
         var variableNumber = day
-        let possibleSection = sections.index {
+        let possibleSection = sections.firstIndex {
             let retval = variableNumber + inDates <= $0
             variableNumber -= $0
             return retval

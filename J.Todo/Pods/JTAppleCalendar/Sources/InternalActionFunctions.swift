@@ -26,7 +26,7 @@ extension JTAppleCalendarView {
     /// Lays out subviews.
     override open func layoutSubviews() {
         super.layoutSubviews()
-        if !generalDelayedExecutionClosure.isEmpty, isCalendarLayoutLoaded {
+        if !generalDelayedExecutionClosure.isEmpty, calendarLayoutIsLoaded {
             executeDelayedTasks(.general)
         }
     }
@@ -42,7 +42,6 @@ extension JTAppleCalendarView {
     }
     
     func setupNewLayout(from oldLayout: JTAppleCalendarLayoutProtocol) {
-        
         let newLayout = JTAppleCalendarLayout(withDelegate: self)
         newLayout.scrollDirection = oldLayout.scrollDirection
         newLayout.sectionInset = oldLayout.sectionInset
@@ -57,10 +56,7 @@ extension JTAppleCalendarView {
         minimumLineSpacing = newLayout.minimumLineSpacing
         minimumInteritemSpacing = newLayout.minimumInteritemSpacing
         
-        
-        if #available(iOS 9.0, *) {
-            transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
-        }
+        transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
         
         super.dataSource = self
         super.delegate = self
@@ -73,20 +69,6 @@ extension JTAppleCalendarView {
                 scrollingMode = .none
             }
         #endif
-    }
-    
-    func scrollTo(indexPath: IndexPath, triggerScrollToDateDelegate: Bool, isAnimationEnabled: Bool, position: UICollectionView.ScrollPosition, extraAddedOffset: CGFloat, completionHandler: (() -> Void)?) {
-        isScrollInProgress = true
-        if let validCompletionHandler = completionHandler { scrollDelayedExecutionClosure.append(validCompletionHandler) }
-        self.triggerScrollToDateDelegate = triggerScrollToDateDelegate
-        DispatchQueue.main.async {
-            self.scrollToItem(at: indexPath, at: position, animated: isAnimationEnabled)
-            if (isAnimationEnabled && self.calendarOffsetIsAlreadyAtScrollPosition(forIndexPath: indexPath)) ||
-                !isAnimationEnabled {
-                self.scrollViewDidEndScrollingAnimation(self)
-            }
-            self.isScrollInProgress = false
-        }
     }
     
     func scrollToHeaderInSection(_ section: Int,
@@ -104,7 +86,7 @@ extension JTAppleCalendarView {
         self.triggerScrollToDateDelegate = triggerScrollToDateDelegate
         
         let maxYCalendarOffset = max(0, self.contentSize.height - self.frame.size.height)
-        var topOfHeader = CGPoint(x: attributes.frame.origin.x,y: min(maxYCalendarOffset, attributes.frame.origin.y))
+        var topOfHeader = CGPoint(x: attributes.frame.origin.x - sectionInset.left, y: min(maxYCalendarOffset, attributes.frame.origin.y))
         if scrollDirection == .horizontal { topOfHeader.x += extraAddedOffset} else { topOfHeader.y += extraAddedOffset }
         DispatchQueue.main.async {
             self.setContentOffset(topOfHeader, animated: animation)
@@ -120,51 +102,6 @@ extension JTAppleCalendarView {
     @available(*, unavailable)
     open override func reloadData() {
         super.reloadData()
-    }
-    
-    func handleScroll(point: CGPoint? = nil,
-                      indexPath: IndexPath? = nil,
-                      triggerScrollToDateDelegate: Bool = true,
-                      isAnimationEnabled: Bool,
-                      position: UICollectionView.ScrollPosition? = .left,
-                      extraAddedOffset: CGFloat = 0,
-                      completionHandler: (() -> Void)?) {
-        
-        if isScrollInProgress { return }
-        
-        // point takes preference
-        if let validPoint = point {
-            scrollTo(point: validPoint,
-                     triggerScrollToDateDelegate: triggerScrollToDateDelegate,
-                     isAnimationEnabled: isAnimationEnabled,
-                     extraAddedOffset: extraAddedOffset,
-                     completionHandler: completionHandler)
-        } else {
-            guard let validIndexPath = indexPath else { return }
-            
-            var isNonConinuousScroll = true
-            switch scrollingMode {
-            case .none, .nonStopToCell: isNonConinuousScroll = false
-            default: break
-            }
-            
-            if calendarViewLayout.thereAreHeaders,
-                scrollDirection == .vertical,
-                isNonConinuousScroll {
-                scrollToHeaderInSection(validIndexPath.section,
-                                        triggerScrollToDateDelegate: triggerScrollToDateDelegate,
-                                        withAnimation: isAnimationEnabled,
-                                        extraAddedOffset: extraAddedOffset,
-                                        completionHandler: completionHandler)
-            } else {
-                scrollTo(indexPath:validIndexPath,
-                         triggerScrollToDateDelegate: triggerScrollToDateDelegate,
-                         isAnimationEnabled: isAnimationEnabled,
-                         position: position ?? .left,
-                         extraAddedOffset: extraAddedOffset,
-                         completionHandler: completionHandler)
-            }
-        }
     }
     
     func scrollTo(point: CGPoint, triggerScrollToDateDelegate: Bool? = nil, isAnimationEnabled: Bool, extraAddedOffset: CGFloat, completionHandler: (() -> Void)?) {
@@ -252,13 +189,13 @@ extension JTAppleCalendarView {
     
     func deleteCellFromSelectedSetIfSelected(_ indexPath: IndexPath) {
         selectedCellData.removeValue(forKey: indexPath)
+        deselectItem(at: indexPath, animated: false)
     }
     
     // Returns an indexPath if valid one was found
     func deselectCounterPartCellIndexPath(_ indexPath: IndexPath, date: Date, dateOwner: DateOwner) -> IndexPath? {
         guard let counterPartCellIndexPath = indexPathOfdateCellCounterPath(date, dateOwner: dateOwner) else { return nil }
         deleteCellFromSelectedSetIfSelected(counterPartCellIndexPath)
-        deselectItem(at: counterPartCellIndexPath, animated: false)
         return counterPartCellIndexPath
     }
     

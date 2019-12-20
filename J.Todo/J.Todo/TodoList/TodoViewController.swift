@@ -62,6 +62,7 @@ class TodoViewController: BaseDataContainViewController {
         super.setNavigationBar()
         navigationItem.title = "ToDo List"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddData))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "sideMenu"), style: .plain, target: self, action: #selector(presentLeftSideMenu))
     }
     
     @objc private func AddData() {

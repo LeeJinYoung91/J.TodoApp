@@ -42,7 +42,7 @@ open class JTAppleCalendarView: UICollectionView {
     }
     
     /// The scroll direction of the sections in JTAppleCalendar.
-    open var scrollDirection: UICollectionView.ScrollDirection!
+    open var scrollDirection: UICollectionView.ScrollDirection = .horizontal
     
     /// The configuration parameters setup by the developer in the confogureCalendar function
     open var cachedConfiguration: ConfigurationParameters? { return _cachedConfiguration }
@@ -67,15 +67,13 @@ open class JTAppleCalendarView: UICollectionView {
         didSet { setupMonthInfoAndMap() } // Refetch the data source for a data source change
     }
     
-    var lastSavedContentOffset: CGFloat    = 0.0
     var triggerScrollToDateDelegate: Bool? = true
     var isScrollInProgress                 = false
     var isReloadDataInProgress             = false
     
-    // keeps track of if didEndScroll is not yet completed. If isStillScrolling
-    var didEndScollCount = 0
     // Keeps track of scroll target location. If isScrolling, and user taps while scrolling
     var endScrollTargetLocation: CGFloat = 0
+    var lastMovedScrollDirection: CGFloat = 0
     
     var generalDelayedExecutionClosure: [(() -> Void)] = []
     var scrollDelayedExecutionClosure: [(() -> Void)]  = []
@@ -163,7 +161,7 @@ open class JTAppleCalendarView: UICollectionView {
     
     var monthMap: [Int: Int] {
         get { return theData.sectionToMonthMap }
-        set { theData.sectionToMonthMap = monthMap }
+        set { theData.sectionToMonthMap = newValue }
     }
 
     var decelerationRateMatchingScrollingMode: CGFloat {
@@ -193,10 +191,11 @@ open class JTAppleCalendarView: UICollectionView {
 @available(iOS 9.0, *)
 extension JTAppleCalendarView {
     /// A semantic description of the view’s contents, used to determine whether the view should be flipped when switching between left-to-right and right-to-left layouts.
-    
     open override var semanticContentAttribute: UISemanticContentAttribute {
         didSet {
-            transform.a = semanticContentAttribute == .forceRightToLeft ? -1 : 1
+            var superviewIsRTL =  false
+            if let validSuperView = superview?.effectiveUserInterfaceLayoutDirection { superviewIsRTL = validSuperView == .rightToLeft && semanticContentAttribute == .unspecified }
+            transform.a = semanticContentAttribute == .forceRightToLeft || superviewIsRTL ? -1: 1
         }
     }
 }

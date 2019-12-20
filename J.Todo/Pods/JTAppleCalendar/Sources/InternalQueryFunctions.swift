@@ -23,57 +23,70 @@
 //
 
 extension JTAppleCalendarView {
-    func validForwardAndBackwordSelectedIndexes(forIndexPath indexPath: IndexPath) -> Set<IndexPath> {
-        var retval: Set<IndexPath> = []
+    func validForwardAndBackwordSelectedIndexes(forIndexPath indexPath: IndexPath, restrictToSection: Bool = true) -> (forwardIndex: IndexPath?, backIndex: IndexPath?, set: Set<IndexPath>) {
+        var retval: (forwardIndex: IndexPath?, backIndex: IndexPath?, set: Set<IndexPath>) = (forwardIndex: nil, backIndex: nil, set: [])
         if let validForwardIndex = calendarViewLayout.indexPath(direction: .next, of: indexPath.section, item: indexPath.item),
-            validForwardIndex.section == indexPath.section,
+            (restrictToSection ? validForwardIndex.section == indexPath.section : true),
             selectedCellData[validForwardIndex] != nil {
-            retval.insert(validForwardIndex)
+            retval.forwardIndex = validForwardIndex
+            retval.set.insert(validForwardIndex)
         }
         if
             let validBackwardIndex = calendarViewLayout.indexPath(direction: .previous, of: indexPath.section, item: indexPath.item),
-            validBackwardIndex.section == indexPath.section,
+            (restrictToSection ? validBackwardIndex.section == indexPath.section : true),
             selectedCellData[validBackwardIndex] != nil {
-            retval.insert(validBackwardIndex)
+            retval.backIndex = validBackwardIndex
+            retval.set.insert(validBackwardIndex)
         }
         return retval
     }
     
-    func targetPointForItemAt(indexPath: IndexPath) -> CGPoint? {
+    // Determines the CGPoint of an index path. The point will vary depending on the scrollingMode
+    func targetPointForItemAt(indexPath: IndexPath, preferredScrollPosition: UICollectionView.ScrollPosition? = nil) -> CGPoint? {
         guard let targetCellFrame = calendarViewLayout.layoutAttributesForItem(at: indexPath)?.frame else { // Jt101 This was changed !!
             return nil
         }
+
+        var x: CGFloat = scrollDirection == .horizontal ? targetCellFrame.origin.x : 0
+        var y: CGFloat = scrollDirection == .vertical ? targetCellFrame.origin.y : 0
         
         let theTargetContentOffset: CGFloat = scrollDirection == .horizontal ? targetCellFrame.origin.x : targetCellFrame.origin.y
         var fixedScrollSize: CGFloat = 0
         switch scrollingMode {
-        case .stopAtEachSection, .stopAtEachCalendarFrame, .nonStopToSection:
-            if scrollDirection == .horizontal || (scrollDirection == .vertical && !calendarViewLayout.thereAreHeaders) {
-                // Horizontal has a fixed width.
-                // Vertical with no header has fixed height
-                fixedScrollSize = calendarViewLayout.sizeOfContentForSection(0)
-            } else {
-                // JT101 will remodel this code. Just a quick fix
-                fixedScrollSize = calendarViewLayout.sizeOfContentForSection(0)
-            }
-        case .stopAtEach(customInterval: let customVal):
-            fixedScrollSize = customVal
-        default:
-            break
+        case let .stopAtEach(customInterval: x): fixedScrollSize = x
+        case let .nonStopTo(customInterval: x, withResistance: _): fixedScrollSize = x
+        case .stopAtEachCalendarFrame: fixedScrollSize = scrollDirection == .horizontal ? self.frame.width : self.frame.height
+        default: break
         }
-        
-        var section = theTargetContentOffset / fixedScrollSize
-        let roundedSection = round(section)
-        if abs(roundedSection - section) < errorDelta { section = roundedSection }
-        section = CGFloat(Int(section))
-        
-        let destinationRectOffset = (fixedScrollSize * section)
-        var x: CGFloat = 0
-        var y: CGFloat = 0
-        if scrollDirection == .horizontal {
-            x = destinationRectOffset
-        } else {
-            y = destinationRectOffset
+
+        switch scrollingMode {
+        case .stopAtEachCalendarFrame, .stopAtEach, .nonStopTo:
+            let frameSection = theTargetContentOffset / fixedScrollSize
+            let roundedFrameSection = floor(frameSection)
+            if scrollDirection == .horizontal {
+                x = roundedFrameSection * fixedScrollSize
+            } else {
+                // vertical is fixed scroll segments because here, we're using stop at frame and custom fixed size
+                y = roundedFrameSection * fixedScrollSize
+            }
+        case .stopAtEachSection, .nonStopToSection:
+            if scrollDirection == .horizontal  {
+                let section = calendarViewLayout.sectionFromOffset(theTargetContentOffset)
+                guard let validValue = calendarViewLayout.cachedValue(for: 0, section: section)?.2 else { return nil}
+                x = validValue - sectionInset.left
+            } else {
+                // If headers, then find the section headers cgpoint for a cellDate. I no headers, then find the first cell's cgpoint of section
+                if !calendarViewLayout.thereAreHeaders {
+                    let section = calendarViewLayout.sectionFromOffset(theTargetContentOffset)
+                    guard let validAttrib = calendarViewLayout.cachedValue(for: 0, section: section)?.3 else { return nil }
+                    y = validAttrib - sectionInset.top
+                } else {
+                    let section = calendarViewLayout.sectionFromOffset(theTargetContentOffset)
+                    guard let validSectionHeaderData = calendarViewLayout.headerCache[section] else { return nil }
+                    y = validSectionHeaderData.3 - sectionInset.top
+                }
+            }
+        default: break
         }
         return CGPoint(x: x, y: y)
     }
@@ -187,7 +200,7 @@ extension JTAppleCalendarView {
                 itemIndex = extraIndex
                 let reCalcRapth = IndexPath(item: itemIndex, section: section)
                 retval = reCalcRapth
-            } else if case 25...31 = dayIndex { // check the following month
+            } else if case 23...31 = dayIndex { // check the following month
                 let periodApart = calendar.dateComponents([.month], from: startOfMonthCache, to: date)
                 let monthSectionIndex = periodApart.month!
                 if monthSectionIndex + 1 >= monthInfo.count {
@@ -299,11 +312,9 @@ extension JTAppleCalendarView {
             let selectedDates = self.selectedDatesSet
             if !selectedDates.contains(date) || selectedDates.isEmpty  { return .none }
             
-            let dateBefore = self._cachedConfiguration.calendar.date(byAdding: .day, value: -1, to: date)!
-            let dateAfter = self._cachedConfiguration.calendar.date(byAdding: .day, value: 1, to: date)!
-            
-            let dateBeforeIsSelected = selectedDates.contains(dateBefore)
-            let dateAfterIsSelected = selectedDates.contains(dateAfter)
+            let validSelectedIndexes = self.validForwardAndBackwordSelectedIndexes(forIndexPath: indexPath)
+            let dateBeforeIsSelected = validSelectedIndexes.backIndex != nil
+            let dateAfterIsSelected = validSelectedIndexes.forwardIndex != nil
             
             var position: SelectionRangePosition
             
@@ -318,6 +329,7 @@ extension JTAppleCalendarView {
             } else {
                 position = .none
             }
+
             return position
         }
         
@@ -440,16 +452,14 @@ extension JTAppleCalendarView {
         
         let rect: CGRect?
         if let offset = offset {
-            rect = CGRect(x: offset.x, y: offset.y, width: frame.width, height: frame.height)
+            rect = CGRect(x: offset.x + 1, y: offset.y + 1, width: frame.width - 2, height: frame.height - 2)
         } else {
             rect = nil
         }
         
         let emptySegment = DateSegmentInfo(indates: [], monthDates: [], outdates: [])
         
-        if !isCalendarLayoutLoaded {
-            return emptySegment
-        }
+        guard calendarLayoutIsLoaded else { return emptySegment }
         
         let cellAttributes = calendarViewLayout.elementsAtRect(excludeHeaders: true, from: rect)
         let indexPaths: [IndexPath] = cellAttributes.map { $0.indexPath }.sorted()

@@ -1,5 +1,5 @@
 //
-//  ViewControllerExtension.swift
+//  TabBarViewController.swift
 //  J.Todo
 //
 //  Created by JinYoung Lee on 2019/12/20.
@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-    
+class TabBarViewController: UITabBarController {
+    override func viewDidLoad() {
+        intializeSideMenu()
+    }
 }

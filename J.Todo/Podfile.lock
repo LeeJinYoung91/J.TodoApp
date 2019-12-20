@@ -1,40 +1,44 @@
 PODS:
-  - JTAppleCalendar (7.1.7)
-  - Realm (3.17.1):
-    - Realm/Headers (= 3.17.1)
-  - Realm/Headers (3.17.1)
-  - RealmSwift (3.17.1):
-    - Realm (= 3.17.1)
-  - RxCocoa (5.0.0):
+  - JTAppleCalendar (7.1.8)
+  - Realm (4.3.0):
+    - Realm/Headers (= 4.3.0)
+  - Realm/Headers (4.3.0)
+  - RealmSwift (4.3.0):
+    - Realm (= 4.3.0)
+  - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.0):
+  - RxRelay (5.0.1):
     - RxSwift (~> 5)
-  - RxSwift (5.0.0)
+  - RxSwift (5.0.1)
+  - SideMenu (6.4.7)
 
 DEPENDENCIES:
   - JTAppleCalendar (~> 7.1)
   - RealmSwift
   - RxCocoa (~> 5)
   - RxSwift (~> 5)
+  - SideMenu (~> 6.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - JTAppleCalendar
     - Realm
     - RealmSwift
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SideMenu
 
 SPEC CHECKSUMS:
-  JTAppleCalendar: 96da4d8388fa6dc82d6a60d41ef36a015e167e2f
-  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
-  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
-  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
-  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
-  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
+  JTAppleCalendar: b7fb40852f5f319fe55c8ec3861f1de0edc99cc8
+  Realm: 9357c3589555793e1860a7104a7412bca4a48d99
+  RealmSwift: 402f1e379a8ef82c635313037b043f0f06de880c
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SideMenu: 928a015669c3afc201e1fe3a87f1b0bc8993a664
 
-PODFILE CHECKSUM: 2858ec9da41538ca8c74d38ce72f641a48da93fa
+PODFILE CHECKSUM: dd7c99a47b4286203ff13187ee32fedc8c49ac76
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

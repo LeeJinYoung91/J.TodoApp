@@ -58,7 +58,7 @@ class TodoDataModel: Object {
         return uuid
     }
     
-    convenience override init(value: Any) {
+    convenience init(value: Any) {
         self.init()
         if let tuple = value as? (String, String) {
             ModelData = BehaviorRelay(value: TodoData(title: tuple.0, content: tuple.1, registedDate: registedDate, imageData: imageData))
