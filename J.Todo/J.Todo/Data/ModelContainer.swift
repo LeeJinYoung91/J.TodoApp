@@ -13,7 +13,4 @@ class ModelContainer {
     static var Instance: ModelContainer { return instance }
     
     var ViewModel: TodoViewModel = TodoViewModel()
-    init() {
-        ViewModel.createContainerWithData()
-    }
 }

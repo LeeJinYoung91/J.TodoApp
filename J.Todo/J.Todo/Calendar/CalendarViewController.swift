@@ -50,7 +50,7 @@ class CalendarViewController: BaseDataContainViewController {
 extension CalendarViewController: JTAppleCalendarViewDataSource {
     func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
         formatter.dateFormat = "yyyy MM dd"
-        let startDate = formatter.date(from: "2019 01 01") ?? Date()
+        let startDate = formatter.date(from: "2020 01 01") ?? Date()
         
         let addYear = 1
         let addMonth = -1

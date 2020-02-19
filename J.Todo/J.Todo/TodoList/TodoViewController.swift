@@ -12,7 +12,7 @@ import RxCocoa
 
 class TodoViewController: BaseDataContainViewController {
     @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: LongPressedEnableTableView!
     
     private var searchedTargetCharacter:String?
     private let disposeComposite = CompositeDisposable()
@@ -27,6 +27,7 @@ class TodoViewController: BaseDataContainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addDelegate()
+        addLongTapGesture()
         setNavigationBar()
     }
     
@@ -44,6 +45,20 @@ class TodoViewController: BaseDataContainViewController {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    private func addLongTapGesture() {
+        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(longTapPress(gesture:)))
+        tableView.addGestureRecognizer(longTapGesture)
+    }
+    
+    @objc private func longTapPress(gesture: UILongPressGestureRecognizer) {
+        let indexPath = tableView.indexPathForRow(at: gesture.location(in: tableView))
+        guard let selectedItemIndexPath = indexPath else { return }
+        if gesture.state == .began {
+            tableView.addPressedIndexPaths(selectedItemIndexPath)
+            tableView.reloadRows(at: [selectedItemIndexPath], with: .automatic)
+        }
     }
     
     private func addObserverable() {
@@ -99,7 +114,7 @@ class TodoViewController: BaseDataContainViewController {
 extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ResultTableCell = tableView.dequeueReusableCell(withIdentifier: "id_resultCell", for: indexPath) as! ResultTableCell
-        cell.bindData(data: searchList[indexPath.row])
+        cell.bindData(data: searchList[indexPath.row], cellIndex: indexPath)
         return cell
     }
     
@@ -111,7 +126,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             todoViewModel.removeSelectResult(searchText: searchCharacter, index: indexPath.row, doneListener: {
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             })
         }
     }
@@ -138,5 +153,19 @@ extension TodoViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
+    }
+}
+
+class LongPressedEnableTableView: UITableView {
+    var indexPaths: [IndexPath] = [IndexPath]()
+    func addPressedIndexPaths(_ indexPath: IndexPath) {
+        if indexPaths.contains(indexPath) {
+            indexPaths.removeAll { (path) -> Bool in
+                return path == indexPath
+            }
+            return
+        }
+        
+        indexPaths.append(indexPath)
     }
 }

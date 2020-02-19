@@ -30,7 +30,7 @@ class TodoDetailViewController: UIViewController {
         modelDisposable = dataModel?.ModelData.subscribe({ (data) in
             self.titleTextField.text = data.element?.title
             self.contentTextView.text = data.element?.content
-            self.registerDateLabel.text = data.element?.registedDate
+            self.registerDateLabel.text = data.element?.getRegistedDate()
             if let imageData = data.element?.imageData {
                 self.imageView.contentMode = .scaleAspectFill
                 self.imageView.image = UIImage(data: imageData)

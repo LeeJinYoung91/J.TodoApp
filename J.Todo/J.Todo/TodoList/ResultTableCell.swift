@@ -13,20 +13,30 @@ import RxCocoa
 
 class ResultTableCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var content: UILabel!
     @IBOutlet weak var registedDate: UILabel!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var seperator: UIView!
-    
-    let disposeBag = DisposeBag()
+    @IBOutlet var dateTopToTitleConstraints: NSLayoutConstraint!
+    @IBOutlet var dateTopToContentConstraints: NSLayoutConstraint!
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         backView.layer.cornerRadius = 8
         seperator.layer.cornerRadius = 4
     }
     
-    func bindData(data:TodoDataModel) {
-        self.title.text = data.ModelData.value.title
-        self.registedDate.text = data.ModelData.value.registedDate
+    func bindData(data:TodoDataModel, cellIndex: IndexPath) {
+        title.text = data.ModelData.value.title
+        registedDate.text = data.ModelData.value.getRegistedDate()
+        content.text = data.ModelData.value.content
         
+        if let tableView = superview as? LongPressedEnableTableView {
+            guard let desc = content.text, !desc.isEmpty else {
+                return
+            }
+                                    
+            dateTopToTitleConstraints.priority = (tableView.indexPaths.contains(cellIndex)) ? UILayoutPriority(250) : UILayoutPriority(1000)
+        }
     }
 }

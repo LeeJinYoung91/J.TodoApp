@@ -23,7 +23,12 @@ class TodoViewModel: NSObject {
         return searchModelList
     }
     
-    func createContainerWithData() {
+    override init() {
+        super.init()
+        self.createContainerWithData()
+    }
+    
+    private func createContainerWithData() {
         let result = realm.objects(TodoDataModel.self)
         searchDataList = getModelList(result: result)
         searchModelList.accept(searchDataList)

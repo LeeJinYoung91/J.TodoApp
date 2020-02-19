@@ -16,22 +16,21 @@ class TodoDataModel: Object {
     struct TodoData {
         var title: String?
         var content: String?
-        var registedDate: String?
+        var registedDate: Date?
         var imageData: Data?
         
         init(title: String?, content: String?, registedDate: Date?, imageData: Data? = nil) {
             self.title = title
             self.content = content
+            self.registedDate = registedDate
+            self.imageData = imageData
+        }
+        
+        func getRegistedDate() -> String {
             let format = DateFormatter()
             format.dateFormat = "YYYY-MM-dd hh:mm"
             format.locale = Locale.current
-            if let date = registedDate {
-                self.registedDate = format.string(from: date)
-            } else {
-                self.registedDate = format.string(from: Date())
-            }
-            
-            self.imageData = imageData
+            return format.string(from: registedDate!)
         }
     }
 

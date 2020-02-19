@@ -115,4 +115,20 @@ extension ListOfTodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TodoModelList.count
     }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        tableView.rowHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: tableView.rowHeight))
+        let title = UILabel(frame: CGRect.zero)
+        let seperatorView = UIView(frame: CGRect(x: 0, y: headerView.frame.height-1, width: tableView.frame.width, height: 2))
+        seperatorView.backgroundColor = UIColor.darkGray
+
+        view.addSubview(title)
+        view.addSubview(seperatorView)
+        
+        return view
+    }
 }
