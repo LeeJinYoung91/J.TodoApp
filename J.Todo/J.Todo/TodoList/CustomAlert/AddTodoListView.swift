@@ -20,6 +20,7 @@ class AddTodoListView: UIView {
     private final let textViewInputColor = UIColor.white
     
     var DataListener: ((TodoDataModel) -> Void)?
+    var SelectDate: Date? = Date()
     
     override func awakeFromNib() {
         addDelegate()
@@ -63,7 +64,7 @@ class AddTodoListView: UIView {
     @objc private func addTodoList() {
         titleInputView.endEditing(true)
         contentInputView.endEditing(true)
-        DataListener?(TodoDataModel(value: (titleInputView.text, contentInputView.text)))
+        DataListener?(TodoDataModel(value: (titleInputView.text, contentInputView.text, SelectDate)))
         hide()
     }
     

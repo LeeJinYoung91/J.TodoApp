@@ -59,7 +59,10 @@ class TodoDataModel: Object {
     
     convenience init(value: Any) {
         self.init()
-        if let tuple = value as? (String, String) {
+        if let tuple = value as? (String, String, Date?) {
+            if let date = tuple.2 {
+                registedDate = date
+            }
             ModelData = BehaviorRelay(value: TodoData(title: tuple.0, content: tuple.1, registedDate: registedDate, imageData: imageData))
             title = ModelData.value.title ?? ""
             content = ModelData.value.content ?? ""

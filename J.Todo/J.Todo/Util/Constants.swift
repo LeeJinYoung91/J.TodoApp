@@ -15,6 +15,7 @@ let screenHeight = UIScreen.main.bounds.height
 
 //MARK:- Custom View Size
 let addTodoAlertViewHeight: CGFloat = 270
+let pickerViewHeight: CGFloat = 200
 
 //MARK:- UIApplication
 let screenRootViewController = UIApplication.shared.keyWindow?.rootViewController

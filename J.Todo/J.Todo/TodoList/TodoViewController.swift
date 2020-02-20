@@ -45,6 +45,7 @@ class TodoViewController: BaseDataContainViewController {
         searchBar.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.estimatedSectionHeaderHeight = 60
     }
     
     private func addLongTapGesture() {
@@ -132,7 +133,17 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "segue_showDetail", sender: tableView.cellForRow(at: indexPath))
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableCell(withIdentifier: "id_header") as? TodoListHeader
+        headerView?.setTitle("List")
+        return headerView
     }
 }
 

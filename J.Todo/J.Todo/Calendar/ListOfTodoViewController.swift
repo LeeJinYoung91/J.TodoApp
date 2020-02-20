@@ -18,7 +18,7 @@ class ListOfTodoViewController: BaseDataContainViewController {
     private var selectedIndexPath: IndexPath?
     private var TodoModelList = [TodoDataModel]()
     private var todoViewModelDisposable: Disposable?
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addDelegate()
@@ -36,6 +36,7 @@ class ListOfTodoViewController: BaseDataContainViewController {
     override func setNavigationBar() {
         super.setNavigationBar()
         navigationItem.title = getTitle()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddData))
     }
     
     private func getTitle() -> String {
@@ -47,7 +48,7 @@ class ListOfTodoViewController: BaseDataContainViewController {
         }
         return "List"
     }
-
+    
     private func addDelegate() {
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,7 +59,7 @@ class ListOfTodoViewController: BaseDataContainViewController {
             guard let date = self?.SearchDate else { return }
             self?.TodoModelList = self?.todoViewModel.getResultFromDate(date) ?? [TodoDataModel]()
             self?.tableView.reloadData()
-        }, onError: nil, onCompleted: nil, onDisposed: nil)
+            }, onError: nil, onCompleted: nil, onDisposed: nil)
     }
     
     private func addLongTapGesture() {
@@ -72,6 +73,25 @@ class ListOfTodoViewController: BaseDataContainViewController {
         selectedIndexPath = selectedItemIndexPath
         if gesture.state == .began {
             createMenuAlert()
+        }
+    }
+    
+    @objc private func AddData() {
+        if let alert: AddTodoListView = Bundle.main.loadNibNamed("AddTodoListView", owner: self, options: nil)?.first as? AddTodoListView {
+            alert.SelectDate = SearchDate
+            alert.present(nil)
+            alert.DataListener = getModelData(model:)
+        }
+    }
+    
+    func getModelData(model: TodoDataModel) {
+        if let timePicker: TimePicker = Bundle.main.loadNibNamed("TimePicker", owner: self, options: nil)?.first as? TimePicker {
+            timePicker.SelectDate = SearchDate
+            timePicker.present()
+            timePicker.SelectListener = { (date) in
+                model.registedDate = date
+                self.todoViewModel.addData(model)
+            }
         }
     }
     
@@ -114,21 +134,5 @@ extension ListOfTodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TodoModelList.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        tableView.rowHeight
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: tableView.rowHeight))
-        let title = UILabel(frame: CGRect.zero)
-        let seperatorView = UIView(frame: CGRect(x: 0, y: headerView.frame.height-1, width: tableView.frame.width, height: 2))
-        seperatorView.backgroundColor = UIColor.darkGray
-
-        view.addSubview(title)
-        view.addSubview(seperatorView)
-        
-        return view
     }
 }
