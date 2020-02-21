@@ -28,6 +28,7 @@ class CalendarViewController: BaseDataContainViewController {
     override func setNavigationBar() {
         super.setNavigationBar()
         navigationItem.title = "Calendar"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "sideMenu"), style: .plain, target: self, action: #selector(presentLeftSideMenu))
     }
     
     private func setUpCalenderConfigureOption() {

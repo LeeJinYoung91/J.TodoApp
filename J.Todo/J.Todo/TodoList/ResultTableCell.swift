@@ -26,17 +26,15 @@ class ResultTableCell: UITableViewCell {
         seperator.layer.cornerRadius = 4
     }
     
-    func bindData(data:TodoDataModel, cellIndex: IndexPath) {
+    func bindData(data:TodoDataModel, cellIndex: IndexPath, expand: Bool) {
         title.text = data.ModelData.value.title
         registedDate.text = data.ModelData.value.getRegistedDate()
         content.text = data.ModelData.value.content
         
-        if let tableView = superview as? LongPressedEnableTableView {
-            guard let desc = content.text, !desc.isEmpty else {
-                return
-            }
-                                    
-            dateTopToTitleConstraints.priority = (tableView.indexPaths.contains(cellIndex)) ? UILayoutPriority(250) : UILayoutPriority(1000)
+        guard let desc = content.text, !desc.isEmpty else {
+            return
         }
+        
+        dateTopToTitleConstraints.priority = expand ? UILayoutPriority(250) : UILayoutPriority(1000)
     }
 }

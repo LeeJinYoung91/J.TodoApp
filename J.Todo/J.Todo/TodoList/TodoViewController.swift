@@ -23,6 +23,8 @@ class TodoViewController: BaseDataContainViewController {
     private var todoViewModelDisposable: Disposable?
     
     private var searchList: [TodoDataModel] = [TodoDataModel]()
+    private var dateCategoryList: [Date] = [Date]()
+    private var classifyModel: [[TodoDataModel]] = [[TodoDataModel]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +66,8 @@ class TodoViewController: BaseDataContainViewController {
     
     private func addObserverable() {
         todoViewModelDisposable = todoViewModel.SearchList.subscribe(onNext: { [weak self] (searchModels) in
+            self?.getDateCategory()
+            classifyDataByDate()
             self?.tableView.reloadData()
             }, onError: nil, onCompleted: nil, onDisposed: nil)
         
@@ -72,6 +76,13 @@ class TodoViewController: BaseDataContainViewController {
                 self?.searchCharacter = query
                 self?.tableView.reloadData()
                 }, onError: nil, onCompleted: nil, onDisposed: nil)
+        
+        func classifyDataByDate() {
+            classifyModel.removeAll()
+            for category in dateCategoryList {
+                classifyModel.append(todoViewModel.getResultFromDate(category))
+            }
+        }
     }
     
     override func setNavigationBar() {
@@ -106,7 +117,21 @@ class TodoViewController: BaseDataContainViewController {
                 return
             }
             
-            detailViewController.setUpWithModel(searchList[indexPath.row])
+            detailViewController.setUpWithModel(classifyModel[indexPath.section][indexPath.row])
+        }
+    }
+    
+    func getDateCategory() {
+        dateCategoryList.removeAll()
+        for model in todoViewModel.SearchList.value {
+            if let dateCategory = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: model.registedDate) {
+                if !dateCategoryList.contains(dateCategory) {
+                    dateCategoryList.append(dateCategory)
+                }
+            }
+        }
+        dateCategoryList.sort { (d1, d2) -> Bool in
+            return d2 > d1
         }
     }
 }
@@ -115,13 +140,13 @@ class TodoViewController: BaseDataContainViewController {
 extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ResultTableCell = tableView.dequeueReusableCell(withIdentifier: "id_resultCell", for: indexPath) as! ResultTableCell
-        cell.bindData(data: searchList[indexPath.row], cellIndex: indexPath)
+        let expand = (tableView as! LongPressedEnableTableView).indexPaths.contains(indexPath)
+        cell.bindData(data: classifyModel[indexPath.section][indexPath.row], cellIndex: indexPath, expand: expand)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        searchList = todoViewModel.getSearchResult(searchText: searchCharacter)
-        return searchList.count
+        return classifyModel[section].count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -130,6 +155,10 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
             })
         }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return dateCategoryList.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -142,7 +171,9 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableCell(withIdentifier: "id_header") as? TodoListHeader
-        headerView?.setTitle("List")
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        headerView?.setTitle(dateFormatter.string(from: dateCategoryList[section]))
         return headerView
     }
 }
