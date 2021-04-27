@@ -1,30 +1,3 @@
-//
-//  NSView+Rx.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 12/6/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(macOS)
-
-    import Cocoa
-    import RxSwift
-
-    extension Reactive where Base: NSView {
-        /// Bindable sink for `hidden` property.
-        public var isHidden:  Binder<Bool> {
-            return Binder(self.base) { view, value in
-                view.isHidden = value
-            }
-        }
-
-        /// Bindable sink for `alphaValue` property.
-        public var alpha: Binder<CGFloat> {
-            return Binder(self.base) { view, value in
-                view.alphaValue = value
-            }
-        }
-    }
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:c99d71b2396e506c2e10ebf707cebd784c5fd6731c3f1541c2b2c0396e6cddc8
+size 681

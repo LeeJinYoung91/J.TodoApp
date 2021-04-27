@@ -1,22 +1,3 @@
-//
-//  HistoricalScheduler.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 12/27/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-import struct Foundation.Date
-
-/// Provides a virtual time scheduler that uses `Date` for absolute time and `NSTimeInterval` for relative time.
-public class HistoricalScheduler : VirtualTimeScheduler<HistoricalSchedulerTimeConverter> {
-
-    /**
-      Creates a new historical scheduler with initial clock value.
-     
-     - parameter initialClock: Initial value for virtual clock.
-    */
-    public init(initialClock: RxTime = Date(timeIntervalSince1970: 0)) {
-        super.init(initialClock: initialClock, converter: HistoricalSchedulerTimeConverter())
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:b0e06b8350fb2609b767efc294a02ca5040597a1d40ddb4e2744dfe5ac30ab43
+size 720

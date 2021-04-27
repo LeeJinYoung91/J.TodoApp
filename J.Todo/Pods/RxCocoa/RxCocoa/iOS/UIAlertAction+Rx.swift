@@ -1,25 +1,3 @@
-//
-//  UIAlertAction+Rx.swift
-//  RxCocoa
-//
-//  Created by Andrew Breckenridge on 5/7/16.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-
-import UIKit
-import RxSwift
-
-extension Reactive where Base: UIAlertAction {
-
-    /// Bindable sink for `enabled` property.
-    public var isEnabled: Binder<Bool> {
-        return Binder(self.base) { alertAction, value in
-            alertAction.isEnabled = value
-        }
-    }
-    
-}
-    
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:79059f18422618e1f8dc7410d3bef50e9bbf50238e0eeedd9f2d9a7c88bebadb
+size 478

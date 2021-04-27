@@ -1,15 +1,3 @@
-//
-//  ItemEvents.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 6/20/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-import UIKit
-
-public typealias ItemMovedEvent = (sourceIndex: IndexPath, destinationIndex: IndexPath)
-public typealias WillDisplayCellEvent = (cell: UITableViewCell, indexPath: IndexPath)
-public typealias DidEndDisplayingCellEvent = (cell: UITableViewCell, indexPath: IndexPath)
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:6109a34c89436be0fb39921f8eb2a4b7a41e41408c46ba4196d44298419e0c7b
+size 456

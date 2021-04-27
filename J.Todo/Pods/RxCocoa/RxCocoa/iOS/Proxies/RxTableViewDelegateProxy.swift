@@ -1,30 +1,3 @@
-//
-//  RxTableViewDelegateProxy.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 6/15/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-
-import UIKit
-import RxSwift
-
-/// For more information take a look at `DelegateProxyType`.
-open class RxTableViewDelegateProxy
-    : RxScrollViewDelegateProxy
-    , UITableViewDelegate {
-
-    /// Typed parent object.
-    public weak private(set) var tableView: UITableView?
-
-    /// - parameter tableView: Parent object for delegate proxy.
-    public init(tableView: UITableView) {
-        self.tableView = tableView
-        super.init(scrollView: tableView)
-    }
-
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:89b1fed88807d21706e7202daf8bc7016d47e58fbf3ddd35a20c837ff6b05672
+size 660

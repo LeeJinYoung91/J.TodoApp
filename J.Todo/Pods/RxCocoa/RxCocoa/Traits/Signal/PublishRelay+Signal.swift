@@ -1,21 +1,3 @@
-//
-//  PublishRelay+Signal.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 12/28/15.
-//  Copyright © 2017 Krunoslav Zaher. All rights reserved.
-//
-
-import RxSwift
-import RxRelay
-
-extension PublishRelay {
-    /// Converts `PublishRelay` to `Signal`.
-    ///
-    /// - returns: Observable sequence.
-    public func asSignal() -> Signal<Element> {
-        let source = self.asObservable()
-            .observeOn(SignalSharingStrategy.scheduler)
-        return SharedSequence(source)
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:201e94d95f2ba3926a13984b0b790e1a47bc0ed27afefeb0a226b787324ff2d4
+size 496

@@ -57,17 +57,15 @@ class TodoDataModel: Object {
         return uuid
     }
     
-    convenience init(value: Any) {
-        self.init()
-        if let tuple = value as? (String, String, Date?) {
-            if let date = tuple.2 {
-                registedDate = date
-            }
-            ModelData = BehaviorRelay(value: TodoData(title: tuple.0, content: tuple.1, registedDate: registedDate, imageData: imageData))
-            title = ModelData.value.title ?? ""
-            content = ModelData.value.content ?? ""
-            imageData = nil
+    convenience init(data: (String, String, Date?)) {
+        self.init(value: data)
+        if let date = data.2 {
+            registedDate = date
         }
+        ModelData = BehaviorRelay(value: TodoData(title: data.0, content: data.1, registedDate: registedDate, imageData: imageData))
+        title = ModelData.value.title ?? ""
+        content = ModelData.value.content ?? ""
+        imageData = nil
     }
     
     override static func primaryKey() -> String? {

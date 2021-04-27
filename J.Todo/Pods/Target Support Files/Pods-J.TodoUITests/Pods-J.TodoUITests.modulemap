@@ -1,6 +1,3 @@
-framework module Pods_J_TodoUITests {
-  umbrella header "Pods-J.TodoUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2c4dfb3bacc1a25042ec29196fbdeb902b2fdbaea9e218981e1703cdfef12ef6
+size 126

@@ -1,18 +1,3 @@
-//
-//  SwiftSupport.swift
-//  RxSwift
-//
-//  Created by Volodymyr  Gorbenko on 3/6/17.
-//  Copyright © 2017 Krunoslav Zaher. All rights reserved.
-//
-
-import Foundation
-
-typealias IntMax = Int64
-public typealias RxAbstractInteger = FixedWidthInteger
-
-extension SignedInteger {
-    func toIntMax() -> IntMax {
-        return IntMax(self)
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:93b5984f9b96ea21d22587789b994382b1eaede3a2db15ff32a8a7d936a3dc24
+size 345

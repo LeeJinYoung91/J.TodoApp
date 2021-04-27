@@ -1,1 +1,2 @@
 *.a filter=lfs diff=lfs merge=lfs -text
+J.Todo/Pods/** filter=lfs diff=lfs merge=lfs -text

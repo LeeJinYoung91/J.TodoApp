@@ -1,22 +1,3 @@
-//
-//  DisposeBase.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 4/4/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-/// Base class for all disposables.
-public class DisposeBase {
-    init() {
-#if TRACE_RESOURCES
-    _ = Resources.incrementTotal()
-#endif
-    }
-    
-    deinit {
-#if TRACE_RESOURCES
-    _ = Resources.decrementTotal()
-#endif
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:941a45d444a3ab8fc745fb436f739803b5f7fd0698680066b2c539c796aee756
+size 378

@@ -1,30 +1,3 @@
-//
-//  AnonymousObserver.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 2/8/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-final class AnonymousObserver<Element>: ObserverBase<Element> {
-    typealias EventHandler = (Event<Element>) -> Void
-    
-    private let _eventHandler : EventHandler
-    
-    init(_ eventHandler: @escaping EventHandler) {
-#if TRACE_RESOURCES
-        _ = Resources.incrementTotal()
-#endif
-        self._eventHandler = eventHandler
-    }
-
-    override func onCore(_ event: Event<Element>) {
-        return self._eventHandler(event)
-    }
-    
-#if TRACE_RESOURCES
-    deinit {
-        _ = Resources.decrementTotal()
-    }
-#endif
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:073bf28cc6c93ee85e0701af45552e607cb57a529f00efcf3d80073e910e6c77
+size 682

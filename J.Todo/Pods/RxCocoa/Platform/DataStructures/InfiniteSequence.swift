@@ -1,25 +1,3 @@
-//
-//  InfiniteSequence.swift
-//  Platform
-//
-//  Created by Krunoslav Zaher on 6/13/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-/// Sequence that repeats `repeatedValue` infinite number of times.
-struct InfiniteSequence<Element> : Sequence {
-    typealias Iterator = AnyIterator<Element>
-    
-    private let _repeatedValue: Element
-    
-    init(repeatedValue: Element) {
-        _repeatedValue = repeatedValue
-    }
-    
-    func makeIterator() -> Iterator {
-        let repeatedValue = _repeatedValue
-        return AnyIterator {
-            return repeatedValue
-        }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2d867227a17b0c54f3a84a91914c261041c7f3aa22dee7067bc3b11cae92ab18
+size 609

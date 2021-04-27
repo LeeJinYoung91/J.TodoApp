@@ -1,28 +1,3 @@
-//
-//  KVORepresentable.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 11/14/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-/// Type that is KVO representable (KVO mechanism can be used to observe it).
-public protocol KVORepresentable {
-    /// Associated KVO type.
-    associatedtype KVOType
-
-    /// Constructs `Self` using KVO value.
-    init?(KVOValue: KVOType)
-}
-
-extension KVORepresentable {
-    /// Initializes `KVORepresentable` with optional value.
-    init?(KVOValue: KVOType?) {
-        guard let KVOValue = KVOValue else {
-            return nil
-        }
-
-        self.init(KVOValue: KVOValue)
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:76d983925163fd23c3ba752fdd5b3761dd5cad57e1259f40d22317d08312e0a2
+size 645

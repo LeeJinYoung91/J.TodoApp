@@ -1,19 +1,3 @@
-//
-//  RxCocoa.h
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 2/21/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#import <Foundation/Foundation.h>
-#import "_RX.h"
-#import "_RXDelegateProxy.h"
-#import "_RXKVOObserver.h"
-#import "_RXObjCRuntime.h"
-
-//! Project version number for RxCocoa.
-FOUNDATION_EXPORT double RxCocoaVersionNumber;
-
-//! Project version string for RxCocoa.
-FOUNDATION_EXPORT const unsigned char RxCocoaVersionString[];
+version https://git-lfs.github.com/spec/v1
+oid sha256:52eb1a1ebd606806b208eb1209dda64b3a8f4fd005af5ed3944d91f11aef3978
+size 462

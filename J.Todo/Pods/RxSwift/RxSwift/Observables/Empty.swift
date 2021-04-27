@@ -1,27 +1,3 @@
-//
-//  Empty.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 8/30/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-extension ObservableType {
-    /**
-     Returns an empty observable sequence, using the specified scheduler to send out the single `Completed` message.
-
-     - seealso: [empty operator on reactivex.io](http://reactivex.io/documentation/operators/empty-never-throw.html)
-
-     - returns: An observable sequence with no elements.
-     */
-    public static func empty() -> Observable<Element> {
-        return EmptyProducer<Element>()
-    }
-}
-
-final private class EmptyProducer<Element>: Producer<Element> {
-    override func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
-        observer.on(.completed)
-        return Disposables.create()
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:fc9bb14184613b6dc287f08e9e44ecf84a5012481cee148e29b459bb717f0c17
+size 846

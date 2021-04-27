@@ -1,28 +1,3 @@
-//
-//  UIRefreshControl+Rx.swift
-//  RxCocoa
-//
-//  Created by Yosuke Ishikawa on 1/31/16.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS)
-
-import UIKit
-import RxSwift
-
-extension Reactive where Base: UIRefreshControl {
-    /// Bindable sink for `beginRefreshing()`, `endRefreshing()` methods.
-    public var isRefreshing: Binder<Bool> {
-        return Binder(self.base) { refreshControl, refresh in
-            if refresh {
-                refreshControl.beginRefreshing()
-            } else {
-                refreshControl.endRefreshing()
-            }
-        }
-    }
-
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:90db3f476d548cd726ac443ce2852f48dde78036a423229a72288c1f64a1d91c
+size 610

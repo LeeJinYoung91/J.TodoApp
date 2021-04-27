@@ -1,27 +1,3 @@
-//
-//  _RXDelegateProxy.h
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 7/4/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#import <Foundation/Foundation.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
-@interface _RXDelegateProxy : NSObject
-
-@property (nonatomic, weak, readonly) id _forwardToDelegate;
-
--(void)_setForwardToDelegate:(id __nullable)forwardToDelegate retainDelegate:(BOOL)retainDelegate NS_SWIFT_NAME(_setForwardToDelegate(_:retainDelegate:)) ;
-
--(BOOL)hasWiredImplementationForSelector:(SEL)selector;
--(BOOL)voidDelegateMethodsContain:(SEL)selector;
-
--(void)_sentMessage:(SEL)selector withArguments:(NSArray*)arguments;
--(void)_methodInvoked:(SEL)selector withArguments:(NSArray*)arguments;
-
-@end
-
-NS_ASSUME_NONNULL_END
+version https://git-lfs.github.com/spec/v1
+oid sha256:be26f2b498f47599acefba6314000b0909e5fd8d7525adf15f95171bf61df64e
+size 741

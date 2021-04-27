@@ -1,32 +1,3 @@
-//
-//  RxCollectionViewDelegateProxy.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 6/29/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-
-import UIKit
-import RxSwift
-
-/// For more information take a look at `DelegateProxyType`.
-open class RxCollectionViewDelegateProxy
-    : RxScrollViewDelegateProxy
-    , UICollectionViewDelegate
-    , UICollectionViewDelegateFlowLayout {
-
-    /// Typed parent object.
-    public weak private(set) var collectionView: UICollectionView?
-
-    /// Initializes `RxCollectionViewDelegateProxy`
-    ///
-    /// - parameter collectionView: Parent object for delegate proxy.
-    public init(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-        super.init(scrollView: collectionView)
-    }
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:bd592019a3a989ca0b49519dcce5d3eb8a72374ed318cf00dcddc0284902b6bd
+size 815

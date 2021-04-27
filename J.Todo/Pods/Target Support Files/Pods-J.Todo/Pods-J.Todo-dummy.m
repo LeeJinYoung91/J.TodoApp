@@ -1,5 +1,3 @@
-#import <Foundation/Foundation.h>
-@interface PodsDummy_Pods_J_Todo : NSObject
-@end
-@implementation PodsDummy_Pods_J_Todo
-@end
+version https://git-lfs.github.com/spec/v1
+oid sha256:e34bd1af5094cd58bda0e2c553e974cc96dc51d87485e53f2076b26bee1cce2e
+size 126

@@ -1,28 +1,3 @@
-//
-//  _RXKVOObserver.h
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 7/11/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#import <Foundation/Foundation.h>
-
-/**
- ################################################################################
- This file is part of RX private API
- ################################################################################
- */
-
-// Exists because if written in Swift, reading unowned is disabled during dealloc process
-@interface _RXKVOObserver : NSObject
-
--(instancetype)initWithTarget:(id)target
-                 retainTarget:(BOOL)retainTarget
-                      keyPath:(NSString*)keyPath
-                      options:(NSKeyValueObservingOptions)options
-                     callback:(void (^)(id))callback;
-
--(void)dispose;
-
-@end
+version https://git-lfs.github.com/spec/v1
+oid sha256:f22c6ed13366b0d8b439b3c8b44311fd2ebc35434d529487d67e884992c37b7e
+size 801

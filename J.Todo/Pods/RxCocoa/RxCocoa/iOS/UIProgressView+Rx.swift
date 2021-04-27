@@ -1,25 +1,3 @@
-//
-//  UIProgressView+Rx.swift
-//  RxCocoa
-//
-//  Created by Samuel Bae on 2/27/16.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-
-import RxSwift
-import UIKit
-
-extension Reactive where Base: UIProgressView {
-
-    /// Bindable sink for `progress` property
-    public var progress: Binder<Float> {
-        return Binder(self.base) { progressView, progress in
-            progressView.progress = progress
-        }
-    }
-
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:dfebe5260fbb2c72e05cac159faa0806b51a33448307d688bcac04d036544e97
+size 471

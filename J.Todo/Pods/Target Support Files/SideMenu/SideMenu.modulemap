@@ -1,6 +1,3 @@
-framework module SideMenu {
-  umbrella header "SideMenu-umbrella.h"
-
-  export *
-  module * { export * }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f5b73195cd776220a83d23f56435188d85013e61fe380aec0c03b6d1ba0af0a7
+size 106

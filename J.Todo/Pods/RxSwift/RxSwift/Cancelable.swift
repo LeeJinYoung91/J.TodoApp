@@ -1,13 +1,3 @@
-//
-//  Cancelable.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 3/12/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-/// Represents disposable resource with state tracking.
-public protocol Cancelable : Disposable {
-    /// Was resource disposed.
-    var isDisposed: Bool { get }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e0475b76c35c06a47a8c973899ccde21c34222066081449d324b65481e722103
+size 310

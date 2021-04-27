@@ -1,34 +1,3 @@
-//
-//  RecursiveLock.swift
-//  Platform
-//
-//  Created by Krunoslav Zaher on 12/18/16.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-import class Foundation.NSRecursiveLock
-
-#if TRACE_RESOURCES
-    class RecursiveLock: NSRecursiveLock {
-        override init() {
-            _ = Resources.incrementTotal()
-            super.init()
-        }
-
-        override func lock() {
-            super.lock()
-            _ = Resources.incrementTotal()
-        }
-
-        override func unlock() {
-            super.unlock()
-            _ = Resources.decrementTotal()
-        }
-
-        deinit {
-            _ = Resources.decrementTotal()
-        }
-    }
-#else
-    typealias RecursiveLock = NSRecursiveLock
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:6f03fa49513b7b1b2da3a5cc564a339cc3a9c4ae5e3ed153f9517552ce1d0a7b
+size 719

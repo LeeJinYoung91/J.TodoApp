@@ -1,16 +1,3 @@
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#else
-#ifndef FOUNDATION_EXPORT
-#if defined(__cplusplus)
-#define FOUNDATION_EXPORT extern "C"
-#else
-#define FOUNDATION_EXPORT extern
-#endif
-#endif
-#endif
-
-
-FOUNDATION_EXPORT double RxSwiftVersionNumber;
-FOUNDATION_EXPORT const unsigned char RxSwiftVersionString[];
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:3b8031e8553d80b7c592ea0854d4510824526d9d2d1a6c40064cbafafe71267e
+size 306

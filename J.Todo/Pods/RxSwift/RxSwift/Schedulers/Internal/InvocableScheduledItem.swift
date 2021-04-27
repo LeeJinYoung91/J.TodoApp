@@ -1,22 +1,3 @@
-//
-//  InvocableScheduledItem.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 11/7/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-struct InvocableScheduledItem<I: InvocableWithValueType> : InvocableType {
-
-    let _invocable: I
-    let _state: I.Value
-
-    init(invocable: I, state: I.Value) {
-        self._invocable = invocable
-        self._state = state
-    }
-
-    func invoke() {
-        self._invocable.invoke(self._state)
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:038b06ee033ffd473c4414535f83682aecf2e97164ee22512584ea783c0cb845
+size 465

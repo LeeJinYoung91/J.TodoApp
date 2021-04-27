@@ -1,13 +1,3 @@
-//
-//  Disposables.swift
-//  RxSwift
-//
-//  Created by Mohsen Ramezanpoor on 01/08/2016.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-/// A collection of utility methods for common disposable operations.
-public struct Disposables {
-    private init() {}
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:1f5ea34101194201ee450c964fa6fbc26671c20a610b1f15db7dad40367ee917
+size 276

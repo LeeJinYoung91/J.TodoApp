@@ -1,33 +1,3 @@
-//
-//  NSButton+Rx.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 5/17/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(macOS)
-
-import RxSwift
-import Cocoa
-
-extension Reactive where Base: NSButton {
-    
-    /// Reactive wrapper for control event.
-    public var tap: ControlEvent<Void> {
-        return self.controlEvent
-    }
-    
-    /// Reactive wrapper for `state` property`.
-    public var state: ControlProperty<NSControl.StateValue> {
-        return self.base.rx.controlProperty(
-            getter: { control in
-                return control.state
-            }, setter: { (control: NSButton, state: NSControl.StateValue) in
-                control.state = state
-            }
-        )
-    }
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:a574d3e4a956d75d75b58a0db90400eb636b3c656205ea7df65189e9d03cd6c3
+size 747

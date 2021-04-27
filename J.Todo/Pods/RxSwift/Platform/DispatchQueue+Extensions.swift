@@ -1,21 +1,3 @@
-//
-//  DispatchQueue+Extensions.swift
-//  Platform
-//
-//  Created by Krunoslav Zaher on 10/22/16.
-//  Copyright © 2016 Krunoslav Zaher. All rights reserved.
-//
-
-import Dispatch
-
-extension DispatchQueue {
-    private static var token: DispatchSpecificKey<()> = {
-        let key = DispatchSpecificKey<()>()
-        DispatchQueue.main.setSpecific(key: key, value: ())
-        return key
-    }()
-
-    static var isMain: Bool {
-        return DispatchQueue.getSpecific(key: token) != nil
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:2514bc97d8cdcb7511639d25f40b680a4d6801ea74fee14d8f4ae03cb9384c79
+size 493

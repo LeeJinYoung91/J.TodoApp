@@ -1,25 +1,3 @@
-//
-//  ControlEvent+Signal.swift
-//  RxCocoa
-//
-//  Created by Krunoslav Zaher on 11/1/17.
-//  Copyright © 2017 Krunoslav Zaher. All rights reserved.
-//
-
-import RxSwift
-
-extension ControlEvent {
-    /// Converts `ControlEvent` to `Signal` trait.
-    ///
-    /// `ControlEvent` already can't fail, so no special case needs to be handled.
-    public func asSignal() -> Signal<Element> {
-        return self.asSignal { _ -> Signal<Element> in
-            #if DEBUG
-                rxFatalError("Somehow signal received error from a source that shouldn't fail.")
-            #else
-                return Signal.empty()
-            #endif
-        }
-    }
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:ce469e23eb69f9244741f8a2e98f8542d2d8357254e7080e0994ac5589f010da
+size 654

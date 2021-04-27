@@ -1,29 +1,3 @@
-//
-//  UIActivityIndicatorView+Rx.swift
-//  RxCocoa
-//
-//  Created by Ivan Persidskiy on 02/12/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-#if os(iOS) || os(tvOS)
-
-import UIKit
-import RxSwift
-
-extension Reactive where Base: UIActivityIndicatorView {
-
-    /// Bindable sink for `startAnimating()`, `stopAnimating()` methods.
-    public var isAnimating: Binder<Bool> {
-        return Binder(self.base) { activityIndicator, active in
-            if active {
-                activityIndicator.startAnimating()
-            } else {
-                activityIndicator.stopAnimating()
-            }
-        }
-    }
-
-}
-
-#endif
+version https://git-lfs.github.com/spec/v1
+oid sha256:25c40c4cd4456bdffc15760e8a8f46f66043c64908eb0a7589d717ea260c4432
+size 642

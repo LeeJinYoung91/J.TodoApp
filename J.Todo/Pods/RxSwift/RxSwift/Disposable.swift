@@ -1,13 +1,3 @@
-//
-//  Disposable.swift
-//  RxSwift
-//
-//  Created by Krunoslav Zaher on 2/8/15.
-//  Copyright © 2015 Krunoslav Zaher. All rights reserved.
-//
-
-/// Represents a disposable resource.
-public protocol Disposable {
-    /// Dispose resource.
-    func dispose()
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5aa229417900d2b9836523bbebcaeb2f7eca8e56a15f54e3d82cc4266d4f2375
+size 259

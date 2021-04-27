@@ -35,6 +35,9 @@
 		10D98E2022E5AF7D0000A373 /* AddTodoListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */; };
 		10D98E2222E5AFF10000A373 /* AddTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2122E5AFF10000A373 /* AddTodoListView.swift */; };
 		10D98E2522E5B0A00000A373 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2422E5B0A00000A373 /* Constants.swift */; };
+		8BDB64C62637DC0F00716546 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB64C42637DC0F00716546 /* TimePicker.swift */; };
+		8BDB64C72637DC0F00716546 /* TimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDB64C52637DC0F00716546 /* TimePicker.xib */; };
+		8BDB64CC2637DC5200716546 /* TodoListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB64CB2637DC5200716546 /* TodoListHeader.swift */; };
 		A4711FC7CAC713A43B2C07A1 /* Pods_J_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851B33DFB8220997A3090AED /* Pods_J_Todo.framework */; };
 		C880440388CBA4632527A86D /* Pods_J_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23B742F94C22BB81734DC402 /* Pods_J_TodoUITests.framework */; };
 		F3886786B7A3AD7A9D9A8CCB /* Pods_J_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 387DC9DD49E219BE543121E8 /* Pods_J_TodoTests.framework */; };
@@ -99,6 +102,9 @@
 		3D1F08A841C9F8697134F9A8 /* Pods-J.TodoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.TodoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-J.TodoUITests/Pods-J.TodoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		74EF4F65003E74B2307BB918 /* Pods-J.Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.Todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-J.Todo/Pods-J.Todo.debug.xcconfig"; sourceTree = "<group>"; };
 		851B33DFB8220997A3090AED /* Pods_J_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_J_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BDB64C42637DC0F00716546 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
+		8BDB64C52637DC0F00716546 /* TimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePicker.xib; sourceTree = "<group>"; };
+		8BDB64CB2637DC5200716546 /* TodoListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListHeader.swift; sourceTree = "<group>"; };
 		CCCC64360C86F711953CCFC5 /* Pods-J.Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.Todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-J.Todo/Pods-J.Todo.release.xcconfig"; sourceTree = "<group>"; };
 		F93858D3EB1DCAA057DB2AC4 /* Pods-J.TodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.TodoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-J.TodoTests/Pods-J.TodoTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,6 +193,7 @@
 		106F489922F3F39E001BFF13 /* Header */ = {
 			isa = PBXGroup;
 			children = (
+				8BDB64CB2637DC5200716546 /* TodoListHeader.swift */,
 				106F489A22F3F3B0001BFF13 /* CalendarHeader.swift */,
 			);
 			path = Header;
@@ -285,6 +292,8 @@
 		10D98E1E22E5AF690000A373 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
+				8BDB64C42637DC0F00716546 /* TimePicker.swift */,
+				8BDB64C52637DC0F00716546 /* TimePicker.xib */,
 				10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */,
 				10D98E2122E5AFF10000A373 /* AddTodoListView.swift */,
 			);
@@ -432,6 +441,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BDB64C72637DC0F00716546 /* TimePicker.xib in Resources */,
 				10D98DED22E5A8DC0000A373 /* LaunchScreen.storyboard in Resources */,
 				10D98DEA22E5A8DC0000A373 /* Assets.xcassets in Resources */,
 				10BA55A422E8204800E564AE /* PhotoCropView.xib in Resources */,
@@ -553,8 +563,10 @@
 				10D98E1722E5A9280000A373 /* ResultTableCell.swift in Sources */,
 				10BA55A022E81CAE00E564AE /* Util.swift in Sources */,
 				10D98E2522E5B0A00000A373 /* Constants.swift in Sources */,
+				8BDB64CC2637DC5200716546 /* TodoListHeader.swift in Sources */,
 				10BA559E22E7F55000E564AE /* TodoDetailViewController.swift in Sources */,
 				106F489822F3D17E001BFF13 /* CalendarDateCell.swift in Sources */,
+				8BDB64C62637DC0F00716546 /* TimePicker.swift in Sources */,
 				106F489B22F3F3B0001BFF13 /* CalendarHeader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
