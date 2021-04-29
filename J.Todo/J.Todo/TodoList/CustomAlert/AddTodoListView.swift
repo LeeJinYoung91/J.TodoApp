@@ -64,7 +64,8 @@ class AddTodoListView: UIView {
     @objc private func addTodoList() {
         titleInputView.endEditing(true)
         contentInputView.endEditing(true)
-        DataListener?(TodoDataModel(value: (titleInputView.text, contentInputView.text, SelectDate)))
+        var data = TodoDataModel(data: (titleInputView.text, contentInputView.text, SelectDate))
+        DataListener?(TodoDataModel(data: (titleInputView.text, contentInputView.text, SelectDate)))
         hide()
     }
     

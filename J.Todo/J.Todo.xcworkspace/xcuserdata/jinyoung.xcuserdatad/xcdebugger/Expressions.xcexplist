@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "closure #2 in TodoViewController.addObserverable():TodoViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self?.searchList">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "UIViewController.LeftSideMenu.getter:ViewControllerExtension-SideMenu.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "SideMenuManager.default.leftMenuNavigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

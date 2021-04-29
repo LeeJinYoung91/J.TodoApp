@@ -35,6 +35,8 @@
 		10D98E2022E5AF7D0000A373 /* AddTodoListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10D98E1F22E5AF7D0000A373 /* AddTodoListView.xib */; };
 		10D98E2222E5AFF10000A373 /* AddTodoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2122E5AFF10000A373 /* AddTodoListView.swift */; };
 		10D98E2522E5B0A00000A373 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D98E2422E5B0A00000A373 /* Constants.swift */; };
+		8B6DAD8B263A436E009415BD /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DAD88263A436E009415BD /* SideMenuViewController.swift */; };
+		8B6DAD8C263A436E009415BD /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6DAD8A263A436E009415BD /* SideMenuCell.swift */; };
 		8BDB64C62637DC0F00716546 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB64C42637DC0F00716546 /* TimePicker.swift */; };
 		8BDB64C72637DC0F00716546 /* TimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BDB64C52637DC0F00716546 /* TimePicker.xib */; };
 		8BDB64CC2637DC5200716546 /* TodoListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDB64CB2637DC5200716546 /* TodoListHeader.swift */; };
@@ -102,6 +104,8 @@
 		3D1F08A841C9F8697134F9A8 /* Pods-J.TodoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.TodoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-J.TodoUITests/Pods-J.TodoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		74EF4F65003E74B2307BB918 /* Pods-J.Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-J.Todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-J.Todo/Pods-J.Todo.debug.xcconfig"; sourceTree = "<group>"; };
 		851B33DFB8220997A3090AED /* Pods_J_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_J_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B6DAD88263A436E009415BD /* SideMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		8B6DAD8A263A436E009415BD /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		8BDB64C42637DC0F00716546 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		8BDB64C52637DC0F00716546 /* TimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePicker.xib; sourceTree = "<group>"; };
 		8BDB64CB2637DC5200716546 /* TodoListHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoListHeader.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				10D98DE922E5A8DC0000A373 /* Assets.xcassets */,
 				10D98DEB22E5A8DC0000A373 /* LaunchScreen.storyboard */,
 				10D98DEE22E5A8DC0000A373 /* Info.plist */,
+				8B6DAD87263A436E009415BD /* SideMenu */,
 				10148C7D23ACBD59003DFAA5 /* TabBar */,
 				10D98E1922E5A9C20000A373 /* Data */,
 				1017A7F923AB662B002C5790 /* Base */,
@@ -321,6 +326,23 @@
 				10477C50E0EE5C31830B6ECD /* Pods-J.TodoUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8B6DAD87263A436E009415BD /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8B6DAD88263A436E009415BD /* SideMenuViewController.swift */,
+				8B6DAD89263A436E009415BD /* Menu */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		8B6DAD89263A436E009415BD /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				8B6DAD8A263A436E009415BD /* SideMenuCell.swift */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		EA2AE3C23485373694F3910A /* Frameworks */ = {
@@ -551,6 +573,7 @@
 				1017A7FB23AB663D002C5790 /* BaseDataContainViewController.swift in Sources */,
 				10148C7F23ACBD6E003DFAA5 /* TabBarViewController.swift in Sources */,
 				1017A7FD23AB6FCE002C5790 /* ListOfTodoViewController.swift in Sources */,
+				8B6DAD8C263A436E009415BD /* SideMenuCell.swift in Sources */,
 				10148C6723AC57F7003DFAA5 /* SelectedTodoListCell.swift in Sources */,
 				10BA55A522E8204800E564AE /* PhotoCropView.swift in Sources */,
 				10D98E1522E5A9280000A373 /* TodoDataModel.swift in Sources */,
@@ -561,6 +584,7 @@
 				106F489522F3D078001BFF13 /* CalendarViewController.swift in Sources */,
 				1017A7F823AB0AAF002C5790 /* DateExtension.swift in Sources */,
 				10D98E1722E5A9280000A373 /* ResultTableCell.swift in Sources */,
+				8B6DAD8B263A436E009415BD /* SideMenuViewController.swift in Sources */,
 				10BA55A022E81CAE00E564AE /* Util.swift in Sources */,
 				10D98E2522E5B0A00000A373 /* Constants.swift in Sources */,
 				8BDB64CC2637DC5200716546 /* TodoListHeader.swift in Sources */,

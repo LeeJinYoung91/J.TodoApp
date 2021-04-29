@@ -38,6 +38,10 @@ class TodoViewModel: NSObject {
         return getModelList(result: getResultFromDatabase(searchText: searchText))
     }
     
+    func getSearchResult(searchText: String, date: Date) -> [TodoDataModel] {
+        return getModelList(result: getResultFromDatabase(searchText: searchText, date: date))
+    }
+    
     private func getModelList(result: Results<TodoDataModel>) -> [TodoDataModel] {
         var list = [TodoDataModel]()
         for model in result {
@@ -67,6 +71,17 @@ class TodoViewModel: NSObject {
             predicate = "title like \"*\(searchText)*\" || content like \"*\(searchText)*\""
         }
         return realm.objects(TodoDataModel.self).filter(predicate)
+    }
+    
+    private func getResultFromDatabase(searchText: String, date: Date) -> Results<TodoDataModel> {
+        var predicate = "title CONTAINS[c] \"\(searchText)\" || content CONTAINS[c] \"\(searchText)\""
+        if searchText.isEmpty {
+            predicate = "title like \"*\(searchText)*\" || content like \"*\(searchText)*\""
+        }
+        
+        let predicateDate = NSPredicate(format: "registedDate > %@ && registedDate < %@", date.dayBefore as NSDate, date.dayAfter as NSDate)
+        
+        return realm.objects(TodoDataModel.self).filter(predicateDate).filter(predicate)
     }
     
     func getResultFromDate(_ date: Date) -> [TodoDataModel] {

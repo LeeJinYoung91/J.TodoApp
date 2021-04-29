@@ -19,8 +19,8 @@ class TodoViewController: BaseDataContainViewController {
     private var tapClear:Bool = false
     
     private var searchCharacter: String = ""
-    private var textFieldDisposable: Disposable?
-    private var todoViewModelDisposable: Disposable?
+    
+    private var disposableBag = DisposeBag()
     
     private var searchList: [TodoDataModel] = [TodoDataModel]()
     private var dateCategoryList: [Date] = [Date]()
@@ -39,8 +39,7 @@ class TodoViewController: BaseDataContainViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        textFieldDisposable?.dispose()
-        todoViewModelDisposable?.dispose()
+        disposableBag = DisposeBag()
     }
     
     private func addDelegate() {
@@ -65,17 +64,17 @@ class TodoViewController: BaseDataContainViewController {
     }
     
     private func addObserverable() {
-        todoViewModelDisposable = todoViewModel.SearchList.subscribe(onNext: { [weak self] (searchModels) in
+        todoViewModel.SearchList.subscribe(onNext: { [weak self] (searchModels) in
             self?.getDateCategory()
             classifyDataByDate()
             self?.tableView.reloadData()
-            }, onError: nil, onCompleted: nil, onDisposed: nil)
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposableBag)
         
-        textFieldDisposable =
-            searchBar.rx.text.orEmpty.subscribe(onNext: { [weak self] (query) in
-                self?.searchCharacter = query
-                self?.tableView.reloadData()
-                }, onError: nil, onCompleted: nil, onDisposed: nil)
+        
+        searchBar.rx.text.orEmpty.subscribe(onNext: { [weak self] (query) in
+            self?.searchCharacter = query
+            self?.tableView.reloadData()
+        }, onError: nil, onCompleted: nil, onDisposed: nil).disposed(by: disposableBag)
         
         func classifyDataByDate() {
             classifyModel.removeAll()
@@ -141,12 +140,14 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:ResultTableCell = tableView.dequeueReusableCell(withIdentifier: "id_resultCell", for: indexPath) as! ResultTableCell
         let expand = (tableView as! LongPressedEnableTableView).indexPaths.contains(indexPath)
-        cell.bindData(data: classifyModel[indexPath.section][indexPath.row], cellIndex: indexPath, expand: expand)
+//        cell.bindData(data: classifyModel[indexPath.section][indexPath.row], cellIndex: indexPath, expand: expand)
+        cell.bindData(data: searchList[indexPath.row], cellIndex: indexPath, expand: expand)
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classifyModel[section].count
+        searchList = todoViewModel.getSearchResult(searchText: searchCharacter, date: dateCategoryList[section])
+        return searchList.count
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

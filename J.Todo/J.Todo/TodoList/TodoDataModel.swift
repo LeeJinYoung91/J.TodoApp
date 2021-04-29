@@ -57,8 +57,8 @@ class TodoDataModel: Object {
         return uuid
     }
     
-    convenience init(data: (String, String, Date?)) {
-        self.init(value: data)
+    convenience init(data: (String?, String?, Date?)) {
+        self.init()
         if let date = data.2 {
             registedDate = date
         }
